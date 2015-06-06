@@ -1,0 +1,64 @@
+<%= form_for @capsule, :html => { :class => "form-horizontal capsule" } do |f| %>
+
+    <% if @capsule.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@capsule.errors.count, "error") %> prohibited this capsule from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @capsule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%= error_span(@capsule[:title]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :message, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :message, :class => 'form-control' %>
+    </div>
+    <%= error_span(@capsule[:message]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :monthlyInterval, :class => 'control-label' %>
+    <div class="controls">
+      <div class="radio">
+        <label>
+          <%= f.radio_button :monthlyInterval, true, :class => 'radio' %>
+          Monthly
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :monthlyInterval, false, :class => 'radio' %>
+          Yearly
+        </label>
+      </div>
+
+    </div>
+    <%= error_span(@capsule[:monthlyInterval]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label 'Event Date', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :eventDate, :class => 'form-control' %>
+    </div>
+    <%= error_span(@capsule[:eventDate]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            capsules_path, :class => 'btn btn-default' %>
+
+<% end %>

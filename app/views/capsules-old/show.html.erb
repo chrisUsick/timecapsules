@@ -1,0 +1,22 @@
+<h1>Capsule: <%= @capsule.title%></h1>
+<p>
+  <%=@capsule.message%>
+</p>
+<p>
+  Event Date: <%= @capsule.eventDate.to_formatted_s :long %>
+</p>
+<p>
+  Sends on: <%= @capsule.sendDate.to_formatted_s :long %>
+</p>
+<p>
+  Sent:
+  <% if @capsule.monthlyInterval? %>
+      <span> Monthly </span>
+  <% else %>
+      <span> Yearly </span>
+  <% end %>
+</p>
+
+
+<%= link_to 'edit', edit_capsule_path %>
+<%= link_to 'Send capsule now', sendCapsule_capsule_path %>

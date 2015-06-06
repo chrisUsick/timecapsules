@@ -1,0 +1,35 @@
+<%= form_for @capsule do |f| %>
+    <% if @capsule.errors.any? %>
+        <div>
+          <p>
+            Errors encountered
+          </p>
+        </div>
+    <%end%>
+
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :message %>
+      <%= f.text_area :message %>
+    </p>
+    <p>
+      <%= f.label :eventDate  %>
+      <%= f.date_select :eventDate %>
+    </p>
+    <p>
+      <%= f.label 'Monthly' %>
+      <%= f.radio_button :monthlyInterval, true %>
+      <%= f.label 'Yearly' %>
+      <%= f.radio_button :monthlyInterval, false %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+
+
+
+

@@ -1,0 +1,14 @@
+<h1>All Capsules</h1>
+<%= link_to 'New', new_capsule_path%>
+<% @capsules.each do |capsule| %>
+    <div>
+      <h2><%= capsule.title%></h2>
+      <p>
+        <%= link_to 'show', capsule_path(capsule) %>
+        <%= link_to 'edit', edit_capsule_path(capsule) %>
+        <%= link_to 'Delete Capsule', capsule_path(capsule),
+                    method: :delete,
+                    data: {confirm: 'Are you sure?'} %>
+      </p>
+    </div>
+<%end%>
