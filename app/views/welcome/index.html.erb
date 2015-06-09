@@ -1,7 +1,8 @@
-<h1>Time Capsules</h1>
-<ul>
-  <li><%= link_to 'sign up', new_user_registration_path %></li>
-  <li><%= link_to 'sign in', new_user_session_path%> </li>
-  <li><%= link_to 'sign out', destroy_user_session_path()%></li>
-</ul>
-
+<div class="jumbotron">
+  <h1>Time Capsules</h1>
+  <p>Remind yourself of the <em>astounding</em> moments in your life</p>
+  <p>
+    <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-primary btn-lg'%>
+  </p>
+</div>
+<p class="text-large">Time Capsules let your </p>
