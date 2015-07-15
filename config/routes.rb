@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount Crono::Web, at: '/crono'
   get 'welcome/index'
+  get 'welcome/home'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

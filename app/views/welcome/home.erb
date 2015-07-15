@@ -1,0 +1,6 @@
+<div id="comingSoon">
+  <h1>Capsules coming up soon:</h1>
+  <p><%= link_to 'All Capsules', capsules_path %></p>
+</div>
+
+<%= render partial: 'shared/capsules_summary', locals: {capsules: @capsules} %>

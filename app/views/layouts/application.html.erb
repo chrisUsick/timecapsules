@@ -14,6 +14,7 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
+
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
@@ -45,9 +46,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Timecapsules</a>
+        <a class="navbar-brand" href="/">Timecapsules</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
+            <li><%= link_to "Home", welcome_home_path %></li>
             <% if current_user %>
                 <li><%= link_to "Capsules", capsules_path %></li>
             <% end %>
