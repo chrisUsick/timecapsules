@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Crono::Web, at: '/crono'
+  mount Monologue::Engine, at: '/features'
   get 'welcome/index'
   get 'home', to: 'welcome#home'
 

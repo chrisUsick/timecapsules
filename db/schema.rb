@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605000756) do
+ActiveRecord::Schema.define(version: 20150718165125) do
 
   create_table "capsules", force: :cascade do |t|
     t.string   "title",           limit: 255
@@ -36,6 +36,41 @@ ActiveRecord::Schema.define(version: 20150605000756) do
   end
 
   add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
+
+  create_table "monologue_posts", force: :cascade do |t|
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.string   "url"
+    t.datetime "published_at"
+  end
+
+  add_index "monologue_posts", ["url"], name: "index_monologue_posts_on_url", unique: true
+
+  create_table "monologue_taggings", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+  end
+
+  add_index "monologue_taggings", ["post_id"], name: "index_monologue_taggings_on_post_id"
+  add_index "monologue_taggings", ["tag_id"], name: "index_monologue_taggings_on_tag_id"
+
+  create_table "monologue_tags", force: :cascade do |t|
+    t.string "name"
+  end
+
+  add_index "monologue_tags", ["name"], name: "index_monologue_tags_on_name"
+
+  create_table "monologue_users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "things", force: :cascade do |t|
     t.string   "name",       limit: 255

@@ -44,3 +44,10 @@ gem 'haml'
 gem 'sinatra', require: nil
 
 gem "twitter-bootstrap-rails"
+
+# gem "blogit"
+# # Blogit depends on ActsAsTaggableOn
+# gem "acts-as-taggable-on"
+
+gem 'monologue'
+# gem 'refinerycms'

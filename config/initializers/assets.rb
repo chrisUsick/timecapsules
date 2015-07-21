@@ -7,3 +7,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 # Rails.application.config.assets.precompile += %w( flexboxgrid.min.css )
+Rails.application.config.assets.precompile += %w( monologue/foundation_icons/social_foundicons.eot )
+Rails.application.config.assets.precompile += %w( monologue/foundation_icons/social_foundicons.woff )
+Rails.application.config.assets.precompile += %w( monologue/foundation_icons/social_foundicons.ttf )
