@@ -49,5 +49,5 @@ gem "twitter-bootstrap-rails"
 # # Blogit depends on ActsAsTaggableOn
 # gem "acts-as-taggable-on"
 
-gem 'monologue'
+# gem 'monologue'
 # gem 'refinerycms'
