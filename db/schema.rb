@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718165125) do
+ActiveRecord::Schema.define(version: 20150605000756) do
 
   create_table "capsules", force: :cascade do |t|
-    t.string   "title",           limit: 255
+    t.string   "title"
     t.text     "message"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.date     "sendDate"
     t.boolean  "monthlyInterval"
-    t.date     "eventDate",                   default: '2015-06-04'
+    t.date     "eventDate",       default: '2015-07-22'
   end
 
   add_index "capsules", ["user_id"], name: "index_capsules_on_user_id"
@@ -37,43 +37,8 @@ ActiveRecord::Schema.define(version: 20150718165125) do
 
   add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
 
-  create_table "monologue_posts", force: :cascade do |t|
-    t.boolean  "published"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "content"
-    t.string   "url"
-    t.datetime "published_at"
-  end
-
-  add_index "monologue_posts", ["url"], name: "index_monologue_posts_on_url", unique: true
-
-  create_table "monologue_taggings", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
-  end
-
-  add_index "monologue_taggings", ["post_id"], name: "index_monologue_taggings_on_post_id"
-  add_index "monologue_taggings", ["tag_id"], name: "index_monologue_taggings_on_tag_id"
-
-  create_table "monologue_tags", force: :cascade do |t|
-    t.string "name"
-  end
-
-  add_index "monologue_tags", ["name"], name: "index_monologue_tags_on_name"
-
-  create_table "monologue_users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "things", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -82,18 +47,18 @@ ActiveRecord::Schema.define(version: 20150718165125) do
   add_index "things", ["user_id"], name: "index_things_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
