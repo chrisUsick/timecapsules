@@ -22,11 +22,7 @@ class CapsulesController < ApplicationController
     @user = current_user
     # render plain: params[:capsule].inspect
     @capsule = @user.capsules.new(capsule_params)
-    if @capsule.monthlyInterval
-      @capsule.sendDate = @capsule.eventDate.next_month
-    else
-      @capsule.sendDate = @capsule.eventDate.next_year
-    end
+    @set_send_date
     if @capsule.save
       redirect_to @capsule
     else
@@ -37,15 +33,21 @@ class CapsulesController < ApplicationController
   def update
     @capsule = Capsule.find params[:id]
     @capsule.update capsule_params
-    if @capsule.monthlyInterval
-      @capsule.sendDate = @capsule.eventDate.next_month
-    else
-      @capsule.sendDate = @capsule.eventDate.next_year
-    end
+    @set_send_date
     if @capsule.save
       redirect_to @capsule
     else
       render 'edit'
+    end
+  end
+
+  def set_send_date
+    if @capsule.monthlyInterval
+      @capsule.sendDate = @capsule.eventDate
+      @capsule.sendDate.change(month: Date.today.next_month.mon) 
+    else
+      @capsule.sendDate = @capsule.eventDate
+      @capsule.sendDate.change(year: Date.today.next_year.year) 
     end
   end
 
